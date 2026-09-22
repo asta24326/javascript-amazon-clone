@@ -668,3 +668,16 @@ export const products = [
     ]
   }
 ];
+
+export let productsFromBackend = [];
+
+function loadProducts() {
+	const xhr = new XMLHttpRequest();
+
+	xhr.addEventListener('load', () => {
+		productsFromBackend = JSON.parse(xhr.response);
+	});
+	xhr.open('GET', 'https://supersimplebackend.dev/products');
+	xhr.send();
+}
+loadProducts();
